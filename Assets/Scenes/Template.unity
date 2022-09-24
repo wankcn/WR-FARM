@@ -1906,7 +1906,7 @@ GameObject:
   - component: {fileID: 1982372828}
   - component: {fileID: 1982372827}
   m_Layer: 0
-  m_Name: Collsion
+  m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

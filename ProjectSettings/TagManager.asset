@@ -41,6 +41,36 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground Bottom
+    uniqueID: 2399594365
+    locked: 0
+  - name: Ground Middle
+    uniqueID: 22487571
+    locked: 0
+  - name: Ground Top
+    uniqueID: 4004674971
+    locked: 0
+  - name: Shuff 1
+    uniqueID: 3397859811
+    locked: 0
+  - name: Shuff 2
+    uniqueID: 371248563
+    locked: 0
+  - name: Dig
+    uniqueID: 867312589
+    locked: 0
+  - name: Water
+    uniqueID: 1400723769
+    locked: 0
   - name: Instance
     uniqueID: 2537493463
+    locked: 0
+  - name: Front 1
+    uniqueID: 2902623097
+    locked: 0
+  - name: Front 2
+    uniqueID: 2159920257
+    locked: 0
+  - name: Collsion
+    uniqueID: 3782487483
     locked: 0

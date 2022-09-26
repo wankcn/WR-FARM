@@ -15,7 +15,7 @@ public class HierarchyStyle
     /// <summary>
     /// 初始化
     /// </summary>
-    [MenuItem("WRTools/应用HierarchyStyle")]
+    [MenuItem("WRTools/Modify-Style/初始化HierarchyStyle")]
     private static void Initialize()
     {
         // 点击ok返回true，点击cancel返回false；

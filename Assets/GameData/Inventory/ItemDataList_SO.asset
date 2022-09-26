@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6daad922022a42749941992cb8b7050, type: 3}
+  m_Name: ItemDataList_SO
+  m_EditorClassIdentifier: 
+  itemDetailsList:
+  - itemID: 1001
+    name: "\u65A7\u5934"
+    itemIcon: {fileID: 21300000, guid: 3714c3e6b5e3d498ebcd06d432b3dd89, type: 3}
+    itemType: 4
+    itemOnWorldSprite: {fileID: 0}
+    itemDescription: "\u4E00\u628A\u780D\u6811\u7684\u65A7\u5934\uFF01"
+    itemUseRadius: 0
+    canPickedup: 0
+    canDropped: 0
+    canCarried: 0
+    itemPrice: 0
+    sellPercentage: 0
+  - itemID: 0
+    name: 
+    itemIcon: {fileID: 0}
+    itemType: 0
+    itemOnWorldSprite: {fileID: 0}
+    itemDescription: 
+    itemUseRadius: 0
+    canPickedup: 0
+    canDropped: 0
+    canCarried: 0
+    itemPrice: 0
+    sellPercentage: 0

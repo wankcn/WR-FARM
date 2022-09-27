@@ -19,6 +19,11 @@ public class ItemEditor : EditorWindow
     /// </summary>
     private ListView itemListView;
 
+    /// <summary>
+    /// 默认预览图片
+    /// </summary>
+    private Sprite defaultIcon;
+
     [MenuItem("WRTools/UI-Toolkit/ItemEditor")]
     public static void ShowExample()
     {
@@ -31,10 +36,6 @@ public class ItemEditor : EditorWindow
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
-        // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        // VisualElement label = new Label("Hello World! From C#");
-        // root.Add(label);
-
         // Import UXML
         var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(Settings.ItemEditorPath);
         VisualElement labelFromUXML = visualTree.Instantiate();
@@ -42,6 +43,8 @@ public class ItemEditor : EditorWindow
 
         // 通过绝对路径拿到模版数据
         itemRowTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(Settings.ItemRowTemplatePath);
+        // 获取默认Icon图片
+        defaultIcon = AssetDatabase.LoadAssetAtPath<Sprite>(Settings.DefaultIconInItemEditor);
 
         // 获得左侧的listview容器
         itemListView = root.Q<VisualElement>("ItemList").Q<ListView>("ListView");
@@ -96,7 +99,7 @@ public class ItemEditor : EditorWindow
             }
         };
 
-        //根据需要高度调整数值
+        // 根据需要高度调整数值
         itemListView.fixedItemHeight = 50;
         itemListView.itemsSource = itemList;
         itemListView.makeItem = makeItem;

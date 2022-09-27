@@ -12,7 +12,7 @@ public class ItemDetails
     /// </summary>
     public int itemID;
 
-    public string name;
+    public string itemName;
 
     public Sprite itemIcon;
 

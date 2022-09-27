@@ -1,15 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row;">
-        <ui:VisualElement name="ItemList" style="height: 100%; width: 30%;">
+        <ui:VisualElement name="ItemList" style="height: 100%; width: 25%;">
             <ui:VisualElement name="Header" style="flex-direction: row; justify-content: space-between;">
-                <ui:Label text="ItemList" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 20px;" />
+                <ui:Label text="ItemList" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 20px; margin-left: 5px;" />
                 <ui:Button text="+" display-tooltip-when-elided="true" />
             </ui:VisualElement>
             <ui:ListView focusable="true" name="ListView" reorderable="true" show-border="true" style="flex-grow: 1;" />
         </ui:VisualElement>
-        <ui:ScrollView name="ItemDetails" style="flex-grow: 1; width: 70%;">
+        <ui:ScrollView name="ItemDetails" style="flex-grow: 1; width: 75%;">
             <ui:VisualElement name="Header" style="flex-direction: row; justify-content: space-between;">
-                <ui:Label text="Details Information" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 20px;" />
+                <ui:Label text="Details Information" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 20px; margin-left: 5px;" />
                 <ui:Button text="Delete" display-tooltip-when-elided="true" />
             </ui:VisualElement>
             <ui:VisualElement name="Content" style="flex-grow: 1;">

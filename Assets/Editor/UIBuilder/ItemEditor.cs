@@ -71,12 +71,38 @@ public class ItemEditor : EditorWindow
         // 找到面板中设置的icon
         iconPreview = itemDetailsSection.Q<VisualElement>("Icon");
 
+        // 找到两个按钮
+        root.Q<Button>("AddButton").clicked += OnAddBtnClicked;
+        root.Q<Button>("DeleteButton").clicked += OnDeleteBtnClicked;
+
+
         // 创建面板时加载数据
         LoadDataBase();
 
         // 生成ListView
         GenerateListView();
     }
+
+    #region 按钮事件
+
+    private void OnAddBtnClicked()
+    {
+        ItemDetails newItem = new ItemDetails();
+        newItem.itemName = "New Name";
+        newItem.itemID = 1000 + itemList.Count + 1;
+        itemList.Add(newItem);
+        itemListView.Rebuild(); // 确保刷新
+    }
+
+    private void OnDeleteBtnClicked()
+    {
+        //从itemList列表中移除当前的激活item，并重新绘制
+        itemList.Remove(activeItem);
+        itemDetailsSection.visible = false; // 删除后数据丢失应该隐藏
+        itemListView.Rebuild();
+    }
+
+    #endregion
 
 
     /// <summary>

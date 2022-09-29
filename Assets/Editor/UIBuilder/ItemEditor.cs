@@ -201,29 +201,15 @@ public class ItemEditor : EditorWindow
             iconPreview.style.backgroundImage = newIcon == null ? defaultIcon.texture : newIcon.texture;
             itemListView.Rebuild();
         });
-    }
 
-    private void GetItemDetailss()
-    {
-        // iconPreview.style.backgroundImage =
-        //     activeItem.itemIcon == null ? defaultIcon.texture : activeItem.itemIcon.texture;
-        // itemDetailsSection.Q<ObjectField>("ItemIcon").value = activeItem.itemIcon;
-        // itemDetailsSection.Q<ObjectField>("ItemIcon").RegisterValueChangedCallback(evt =>
-        // {
-        //     Sprite newIcon = evt.newValue as Sprite;
-        //     activeItem.itemIcon = newIcon;
-        //
-        //     iconPreview.style.backgroundImage = newIcon == null ? defaultIcon.texture : newIcon.texture;
-        //     itemListView.Rebuild();
-        // });
-
-        //其他所有变量的绑定
-        itemDetailsSection.Q<ObjectField>("ItemSprite").value = activeItem.itemOnWorldSprite;
-        itemDetailsSection.Q<ObjectField>("ItemSprite").RegisterValueChangedCallback(evt =>
+        // 世界图标绑定
+        itemDetailsSection.Q<ObjectField>("ItemOnWorldIcon").value = activeItem.itemOnWorldSprite;
+        itemDetailsSection.Q<ObjectField>("ItemOnWorldIcon").RegisterValueChangedCallback(e =>
         {
-            activeItem.itemOnWorldSprite = (Sprite) evt.newValue;
+            activeItem.itemOnWorldSprite = (Sprite) e.newValue;
         });
 
+        // 道具类型
         itemDetailsSection.Q<EnumField>("ItemType").Init(activeItem.itemType);
         itemDetailsSection.Q<EnumField>("ItemType").value = activeItem.itemType;
         itemDetailsSection.Q<EnumField>("ItemType").RegisterValueChangedCallback(evt =>
@@ -231,46 +217,53 @@ public class ItemEditor : EditorWindow
             activeItem.itemType = (ItemType) evt.newValue;
         });
 
+        // 道具描述
         itemDetailsSection.Q<TextField>("Description").value = activeItem.itemDescription;
-        itemDetailsSection.Q<TextField>("Description").RegisterValueChangedCallback(evt =>
+        itemDetailsSection.Q<TextField>("Description").RegisterValueChangedCallback(e =>
         {
-            activeItem.itemDescription = evt.newValue;
+            activeItem.itemDescription = e.newValue;
         });
 
+        // 道具使用的网格范围
         itemDetailsSection.Q<IntegerField>("ItemUseRadius").value = activeItem.itemUseRadius;
-        itemDetailsSection.Q<IntegerField>("ItemUseRadius").RegisterValueChangedCallback(evt =>
+        itemDetailsSection.Q<IntegerField>("ItemUseRadius").RegisterValueChangedCallback(e =>
         {
-            activeItem.itemUseRadius = evt.newValue;
+            activeItem.itemUseRadius = e.newValue;
         });
 
-        itemDetailsSection.Q<Toggle>("CanPickedup").value = activeItem.canPickedup;
-        itemDetailsSection.Q<Toggle>("CanPickedup").RegisterValueChangedCallback(evt =>
+        // 是否可拾取
+        itemDetailsSection.Q<Toggle>("CanPickedUp").value = activeItem.canPickedup;
+        itemDetailsSection.Q<Toggle>("CanPickedUp").RegisterValueChangedCallback(e =>
         {
-            activeItem.canPickedup = evt.newValue;
+            activeItem.canPickedup = e.newValue;
         });
 
+        // 是否可丢弃
         itemDetailsSection.Q<Toggle>("CanDropped").value = activeItem.canDropped;
-        itemDetailsSection.Q<Toggle>("CanDropped").RegisterValueChangedCallback(evt =>
+        itemDetailsSection.Q<Toggle>("CanDropped").RegisterValueChangedCallback(e =>
         {
-            activeItem.canDropped = evt.newValue;
+            activeItem.canDropped = e.newValue;
         });
 
+        // 是否可举起
         itemDetailsSection.Q<Toggle>("CanCarried").value = activeItem.canCarried;
-        itemDetailsSection.Q<Toggle>("CanCarried").RegisterValueChangedCallback(evt =>
+        itemDetailsSection.Q<Toggle>("CanCarried").RegisterValueChangedCallback(e =>
         {
-            activeItem.canCarried = evt.newValue;
+            activeItem.canCarried = e.newValue;
         });
 
+        // 物品价格
         itemDetailsSection.Q<IntegerField>("Price").value = activeItem.itemPrice;
-        itemDetailsSection.Q<IntegerField>("Price").RegisterValueChangedCallback(evt =>
+        itemDetailsSection.Q<IntegerField>("Price").RegisterValueChangedCallback(e =>
         {
-            activeItem.itemPrice = evt.newValue;
+            activeItem.itemPrice = e.newValue;
         });
 
+        // 物品出售百分比
         itemDetailsSection.Q<Slider>("SellPercentage").value = activeItem.sellPercentage;
-        itemDetailsSection.Q<Slider>("SellPercentage").RegisterValueChangedCallback(evt =>
+        itemDetailsSection.Q<Slider>("SellPercentage").RegisterValueChangedCallback(e =>
         {
-            activeItem.sellPercentage = evt.newValue;
+            activeItem.sellPercentage = e.newValue;
         });
     }
 }

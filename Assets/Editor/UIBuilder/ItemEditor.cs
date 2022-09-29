@@ -36,6 +36,11 @@ public class ItemEditor : EditorWindow
     /// </summary>
     private Sprite defaultIcon;
 
+    /// <summary>
+    /// 修改显示图片 style-background中的Img
+    /// </summary>
+    private VisualElement iconPreview;
+
 
     [MenuItem("WRTools/UI-Toolkit/ItemEditor")]
     public static void ShowExample()
@@ -63,6 +68,8 @@ public class ItemEditor : EditorWindow
         itemListView = root.Q<VisualElement>("ItemList").Q<ListView>("ListView");
         // 获得右侧的ScrollView容器
         itemDetailsSection = root.Q<ScrollView>("ItemDetails");
+        // 找到面板中设置的icon
+        iconPreview = itemDetailsSection.Q<VisualElement>("Icon");
 
         // 创建面板时加载数据
         LoadDataBase();
@@ -138,14 +145,14 @@ public class ItemEditor : EditorWindow
     {
         // 标记为dirty，方便保存数据更改数据和撤销数据
         itemDetailsSection.MarkDirtyRepaint();
-        
+
         // ID
         itemDetailsSection.Q<IntegerField>("ItemID").value = activeItem.itemID;
         itemDetailsSection.Q<IntegerField>("ItemID").RegisterValueChangedCallback(e =>
         {
             activeItem.itemID = e.newValue;
         });
-        
+
         // 名字
         itemDetailsSection.Q<TextField>("ItemName").value = activeItem.itemName;
         itemDetailsSection.Q<TextField>("ItemName").RegisterValueChangedCallback(e =>
@@ -154,25 +161,24 @@ public class ItemEditor : EditorWindow
             // 修改名字后重新构建一次
             itemListView.Rebuild();
         });
+
+        // 设置显示图片 VisualElement中类型为texture
+        iconPreview.style.backgroundImage =
+            activeItem.itemIcon == null ? defaultIcon.texture : activeItem.itemIcon.texture;
+        itemDetailsSection.Q<ObjectField>("ItemIcon").value = activeItem.itemIcon;
+        itemDetailsSection.Q<ObjectField>("ItemIcon").RegisterValueChangedCallback(e =>
+        {
+            Sprite newIcon = e.newValue as Sprite;
+            activeItem.itemIcon = newIcon;
+
+            // 修改预览的图片 没有图片时显示默认图片
+            iconPreview.style.backgroundImage = newIcon == null ? defaultIcon.texture : newIcon.texture;
+            itemListView.Rebuild();
+        });
     }
 
     private void GetItemDetailss()
     {
-        itemDetailsSection.MarkDirtyRepaint();
-
-        itemDetailsSection.Q<IntegerField>("ItemID").value = activeItem.itemID;
-        itemDetailsSection.Q<IntegerField>("ItemID").RegisterValueChangedCallback(evt =>
-        {
-            activeItem.itemID = evt.newValue;
-        });
-
-        itemDetailsSection.Q<TextField>("ItemName").value = activeItem.itemName;
-        itemDetailsSection.Q<TextField>("ItemName").RegisterValueChangedCallback(evt =>
-        {
-            activeItem.itemName = evt.newValue;
-            itemListView.Rebuild();
-        });
-
         // iconPreview.style.backgroundImage =
         //     activeItem.itemIcon == null ? defaultIcon.texture : activeItem.itemIcon.texture;
         // itemDetailsSection.Q<ObjectField>("ItemIcon").value = activeItem.itemIcon;
